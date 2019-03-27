@@ -27,7 +27,7 @@ define Package/proftpd
   TITLE:=ProFTPD FTP server
   URL:=http://www.proftpd.org/
   MAINTAINER:=Cezary Jackiewicz <cezary@eko.one.pl>
-  DEPENDS:=+libattr
+  DEPENDS:=+libattr +libubacktrace
 endef
 
 define Package/proftpd/conffiles
