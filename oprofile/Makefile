@@ -8,12 +8,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=oprofile
-PKG_VERSION:=1.3.0
+PKG_VERSION:=1.1.0rc2
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=@SF/oprofile/
-PKG_HASH:=95ded8bde1ec39922f0af015981a67aec63e025a501e4dc04cd65d38f73647e6
+PKG_MD5SUM:=ebc27a8478068cb986efd295cc4ac877
 
 PKG_MAINTAINER:=Felix Fietkau <nbd@openwrt.org>
 
@@ -26,7 +26,6 @@ PKG_USE_MIPS16:=0
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/kernel.mk
-include $(INCLUDE_DIR)/nls.mk
 
 define Package/oprofile
   SECTION:=devel
@@ -86,7 +85,7 @@ define Package/oprofile/install
 	$(INSTALL_DIR) $(1)/opt/share/oprofile
 	$(CP) \
 		$(PKG_INSTALL_DIR)/opt/share/oprofile/stl.pat \
-		$(PKG_INSTALL_DIR)/opt/share/oprofile/ \
+		$(PKG_INSTALL_DIR)/opt/share/oprofile/$(patsubst x86,i386,$(LINUX_KARCH)) \
 		$(1)/opt/share/oprofile/
 endef
 
